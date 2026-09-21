@@ -1,0 +1,54 @@
+/* Final editorial polish. Existing layout/colors/section order are preserved. */
+.hero-index{border-top-color:#adb5c2}
+.hero-index .index-row strong{color:#536071;font-weight:600}
+.hero-index .text-link{color:#536071}
+.ra-sample-label{font-size:14px;color:#536071;margin:0 0 18px}
+.ra-intro .ra-product{margin-top:24px}
+.ra-signals{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 24px}
+.ra-signals>div{padding:16px 0;border-top:1px solid var(--line);border-bottom:0}
+.ra-signals h4{font-size:18px;margin-bottom:8px}
+.ra-signals p{margin-bottom:0}
+.ra-insights{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.ra-insights p{font-size:15px}
+.ra-decisions{margin-top:44px;padding-top:32px;border-top:3px solid var(--blue)}
+.ra-case .ra-decisions>h4{font-size:34px}
+#ra-sources{margin-top:36px}
+#ra-sources .ra-data{margin-top:0}
+#ra-sources .ra-source-title:first-of-type{margin-top:24px}
+/* Readability changes below apply only to smaller screens. */
+@media screen and (max-width:800px){
+ .ra-signals{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .ra-insights{grid-template-columns:1fr}
+}
+@media screen and (max-width:600px){
+ .hero h1{font-size:clamp(24px,6.8vw,29px);line-height:1.45;letter-spacing:-1.1px}
+ .hero-description{font-size:15px;line-height:1.65}
+ .competency-grid{grid-template-columns:1fr;gap:14px}
+ .competency-grid>a{padding:22px;min-height:158px}
+ .competency-grid h2{font-size:19px;margin:8px 0 10px}
+ .competency-grid p{font-size:15px;line-height:1.65;min-height:3.3em}
+ .competency-grid .card-arrow{right:22px;top:20px}
+ main p,main li,main small,main summary,main .ai-usage span{line-height:1.65}
+ .hero-description,.section-heading>p,.commerce-overview article>p:not(.small-label),.digital-copy>p,.about-intro,.career-card ul,.timeline article>div>p{font-size:15px;line-height:1.65}
+ .section-note,.small-label,.career-date,.employer,.career-more p,.digital-copy>small,.digital-copy>p.digital-demo-note,.work-meta,.work-role{font-size:12px;line-height:1.65}
+ .section{padding-top:60px;padding-bottom:60px}
+ .section-heading>p{max-width:34em}
+ .about-grid>*{min-width:0}
+ .email{font-size:clamp(20px,6vw,24px);gap:12px;overflow-wrap:anywhere}
+ .md-board p,.md-board ul,.md-board li{line-height:1.65}
+ .md-board .md-source-note,.md-board .md-decision-note{line-height:1.65!important}
+ .ra-case{line-height:1.65}
+ .ra-case p{line-height:1.65}
+ .ra-case .ra-note{font-size:13px;line-height:1.65}
+ .ra-case h3{font-size:25px;line-height:1.5}
+ .ra-case .ra-decisions>h4{font-size:29px}
+ .ra-case h5{font-size:21px;line-height:1.5}
+ .ra-signals{grid-template-columns:1fr;gap:14px}
+ .ra-signals>div{padding:16px 0 8px}
+ .ra-signals h4{font-size:18px}
+ .ra-signals p,.ra-insights p,.ra-compare p:last-child{font-size:15px;line-height:1.65}
+ .ra-compare .ra-quote{font-size:22px;line-height:1.65}
+ .ra-deck{font-size:16px}
+ .ra-product>p,.ra-data span,.ra-data p,.ra-source-list a,.ra-source-list span,.ra-details>summary small,.ra-scents span,.ra-bundles p,.ra-faq span{font-size:13px}
+ .ra-insights{gap:24px}
+}
