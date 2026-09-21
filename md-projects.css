@@ -1,0 +1,13 @@
+.commerce-operations{margin-top:56px;padding-top:4px}
+.commerce-operations>.subheading{margin-top:0;margin-bottom:24px}
+#ecommerce>.subheading{margin-top:0}
+.promotion-preview{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin:40px auto 0;max-width:860px}
+.promotion-preview button{display:block;min-width:0;padding:0;text-align:left;background:white;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.promotion-preview img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;object-position:50% 0%}
+.promotion-preview button:first-child img{object-position:50% 0%}
+.promotion-preview button>span{display:flex;justify-content:space-between;padding:16px 18px;font-size:14px;color:#53647f;font-weight:500}
+.promotion-preview b{font-weight:400}
+.promotion-preview+.promotion-disclosure{margin-top:16px}
+@media(min-width:861px){#ecommerce>.work-grid .work-image{height:240px}}
+@media(max-width:700px){.promotion-preview{gap:16px;margin-top:32px}.promotion-preview button>span{padding:12px;font-size:12px;gap:8px}.commerce-operations{margin-top:38px}.commerce-operations>.subheading h3{font-size:18px}}
+@media print{.promotion-preview{break-inside:avoid}.promotion-preview img{height:180px}.commerce-operations{margin-top:28px}}
