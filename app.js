@@ -36,29 +36,6 @@ document.querySelectorAll('[data-image]').forEach(button=>button.addEventListene
  const img=document.createElement('img');img.className='dialog-image';img.src=button.dataset.image;img.alt=button.dataset.title;
  openDialog(button.dataset.title,button.dataset.description,'',img,button);
 }));
-function element(tag,cls,text){const el=document.createElement(tag);if(cls)el.className=cls;if(text)el.textContent=text;return el;}
-function showProject(id,trigger){
- const project=window.portfolioProject;
- if(!project||!project.stages.some(stage=>stage.id===id))return;
- const wrapper=element('div','project-detail');
- const tabs=element('div','project-tabs');tabs.setAttribute('role','tablist');tabs.setAttribute('aria-label','론칭 프로젝트 단계');
- const panel=element('div','project-panel');panel.id='project-panel';panel.setAttribute('role','tabpanel');panel.tabIndex=0;
- function selectStage(stageId,focus=false){
-  const stage=project.stages.find(item=>item.id===stageId);panel.replaceChildren();
-  tabs.querySelectorAll('button').forEach(tab=>{const selected=tab.dataset.stage===stageId;tab.setAttribute('aria-selected',String(selected));tab.tabIndex=selected?0:-1;if(selected&&focus)tab.focus();});
-  panel.setAttribute('aria-labelledby','stage-'+stage.id);
-  panel.append(element('h3','',stage.number+' / '+stage.title),element('p','project-question',stage.question));
-  const state=element('div','planned-label');state.append(element('strong','',stage.evidence.length?'등록한 자료':'자료 준비 중'),element('span','',stage.evidence.length?'아래 자료와 확인할 항목을 함께 소개합니다.':'아래는 앞으로 확인하고 제작할 항목입니다.'));panel.append(state);
-  const grid=element('div','project-items');
-  stage.items.forEach(([title,text])=>{const item=element('article','project-item');item.append(element('h4','',title),element('p','',text));grid.append(item);});panel.append(grid);
-  const result=element('p','project-deliverable');result.append(element('strong','','준비할 결과물'),document.createTextNode(stage.deliverable));panel.append(result);
-  stage.evidence.forEach(evidence=>{const item=element('article','project-evidence');item.append(element('h4','',evidence.title),element('p','',evidence.text));panel.append(item);});
- }
- project.stages.forEach((stage,index)=>{const tab=element('button','',stage.number+' '+stage.title);tab.id='stage-'+stage.id;tab.dataset.stage=stage.id;tab.setAttribute('role','tab');tab.setAttribute('aria-controls',panel.id);tab.addEventListener('click',()=>selectStage(stage.id));tab.addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();const length=project.stages.length;const next=event.key==='Home'?0:event.key==='End'?length-1:(index+(event.key==='ArrowRight'?1:-1)+length)%length;selectStage(project.stages[next].id,true);});tabs.append(tab);});
- wrapper.append(tabs,panel);selectStage(id);
- openDialog('온라인 MD 신상품 론칭 프로젝트','상품 선정 전의 기획 단계입니다. 시장 조사와 제작물을 준비한 뒤 추가하며, 실제 판매 성과는 기재하지 않습니다.',project.status,wrapper,trigger);
-}
-document.querySelectorAll('[data-project-step]').forEach(button=>button.addEventListener('click',()=>showProject(button.dataset.projectStep,button)));
 let printState=null;
 window.addEventListener('beforeprint',()=>{if(printState)return;printState=[...document.querySelectorAll('details')].map(el=>[el,el.open]);printState.forEach(([el])=>{el.open=true;});});
 window.addEventListener('afterprint',()=>{printState?.forEach(([el,wasOpen])=>{el.open=wasOpen;});printState=null;});
