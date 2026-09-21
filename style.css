@@ -40,7 +40,7 @@ dialog{border:0;border-radius:9px;padding:0;width:min(1000px,94vw);max-height:91
 .md-cover-card:hover .md-cover-foot b { text-decoration:underline; text-underline-offset:4px; }
 #detail-dialog.md-report-dialog { width:min(1160px,96vw); }
 #detail-dialog .md-board { background:#fff; }
-#detail-dialog .md-board section { padding:0; }
+
 @media(hover:none) { .digital-demo-image .demo-overlay { opacity:1; } }
 @media(max-width:720px) {
  .md-cover-grid { grid-template-columns:1fr; gap:24px; }

@@ -57,6 +57,7 @@ window.addEventListener('beforeprint', () => {
  printedCases = document.createElement('div');
  printedCases.className = 'md-print-reports';
  document.querySelectorAll('#project template').forEach(template => printedCases.append(template.content.cloneNode(true)));
+ printedCases.querySelectorAll('details').forEach(details => { details.open = true; });
  document.querySelector('#project .wrap').append(printedCases);
 });
 window.addEventListener('afterprint', () => { printedCases?.remove(); printedCases = null; });
