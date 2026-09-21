@@ -40,3 +40,23 @@ let printState=null;
 window.addEventListener('beforeprint',()=>{if(printState)return;printState=[...document.querySelectorAll('details')].map(el=>[el,el.open]);printState.forEach(([el])=>{el.open=true;});});
 window.addEventListener('afterprint',()=>{printState?.forEach(([el,wasOpen])=>{el.open=wasOpen;});printState=null;});
 document.querySelector('#print').addEventListener('click',()=>window.print());
+
+// Keep the existing evidence as selectable HTML inside the shared accessible dialog.
+document.querySelectorAll('[data-md-case]').forEach(button => button.addEventListener('click', () => {
+ const template = document.getElementById(button.dataset.mdCase);
+ if (!(template instanceof HTMLTemplateElement)) return;
+ const content = template.content.querySelector('.md-board').cloneNode(true);
+ dialog.classList.add('md-report-dialog');
+ openDialog(button.dataset.title, button.dataset.description, 'PERSONAL MD CASE · 2026', content, button);
+}));
+dialog.addEventListener('close', () => dialog.classList.remove('md-report-dialog'));
+// Include the complete reports when saving the existing portfolio as PDF.
+let printedCases = null;
+window.addEventListener('beforeprint', () => {
+ if (printedCases) return;
+ printedCases = document.createElement('div');
+ printedCases.className = 'md-print-reports';
+ document.querySelectorAll('#project template').forEach(template => printedCases.append(template.content.cloneNode(true)));
+ document.querySelector('#project .wrap').append(printedCases);
+});
+window.addEventListener('afterprint', () => { printedCases?.remove(); printedCases = null; });
